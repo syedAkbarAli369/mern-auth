@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom'
 import { AppContent } from '../context/AppContext';
 import axios from 'axios'
 import { toast } from 'react-toastify'
+import api from '../utils/api';
 
 const Login = () => {
 
@@ -27,7 +28,7 @@ const Login = () => {
       axios.defaults.withCredentials = true;
 
       if (state === 'Sign Up') {
-        const { data } = await axios.post(backendURL + '/api/auth/register', { name, email, password });
+        const { data } = await api.post('/api/auth/register', { name, email, password });
 
         if (data.success) {
           setIsLogged(true);
@@ -39,7 +40,7 @@ const Login = () => {
         }
       }
       else {
-        const { data } = await axios.post(backendURL + '/api/auth/login', { email, password })
+        const { data } = await api.post('/api/auth/login', { email, password })
 
         if (data.success) {
           setIsLogged(true);
@@ -53,7 +54,7 @@ const Login = () => {
       }
 
     } catch (error) {
-      toast.error(data.message)
+      toast.error(error.message)
     }
 
   }

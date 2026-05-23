@@ -7,6 +7,7 @@ import Button from '../components/Button';
 import { AppContent } from '../context/AppContext';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import api from '../utils/api';
 
 const ResetPassword = () => {
 
@@ -52,7 +53,7 @@ const ResetPassword = () => {
     e.preventDefault();
 
     try {
-      const { data } = await axios.post(backendURL + '/api/auth/send-reset-otp', { email })
+      const { data } = await api.post('/api/auth/send-reset-otp', { email })
 
       if (data.success) {
         toast.success(data.message)
@@ -83,7 +84,7 @@ const ResetPassword = () => {
 
     try {
 
-      const { data } = await axios.post(backendURL + '/api/auth/reset-password', { email, otp, newPassword });
+      const { data } = await api.post('/api/auth/reset-password', { email, otp, newPassword });
       if (data.success) {
         toast.success(data.message)
       }

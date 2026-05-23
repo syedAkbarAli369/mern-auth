@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom'
 import { AppContent } from '../context/AppContext'
 import axios from 'axios'
 import { toast } from 'react-toastify';
+import api from '../utils/api'
 
 const EmailVerify = () => {
 
@@ -48,7 +49,7 @@ const EmailVerify = () => {
       const otpArray = inputRefs.current.map(e => e.value)
       const otp = otpArray.join('');
 
-      const { data } = await axios.post(backendURL + '/api/auth/verify-account', { otp })
+      const { data } = await api.post('/api/auth/verify-account', { otp })
 
       if (data.success) {
         toast.success(data.message);
