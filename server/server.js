@@ -23,7 +23,7 @@ const allowedOrigins = ['http://localhost:5173', 'https://mern-authentication-sa
 
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors({ origin: allowedOrigins, credentials: true }));
+app.use(cors({ origin: 'https://mern-authentication-sandy.vercel.app', credentials: true }));
 
 app.get('/', (req, res) => res.send("API working fine"))
 app.use('/api/auth', authRouter)
