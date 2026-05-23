@@ -102,7 +102,7 @@ const ResetPassword = () => {
 
   return (
 
-    <div className='flex items-center justify-center min-h-screen px-6 sm:px-0 bg-slate-600'>
+    <div className='flex items-center justify-center min-h-screen px-6 sm:px-0 bg-slate-600 overflow-hidden'>
       <p onClick={() => navigate('/')} className='text-3xl font-bold text-white p-9 sm:p-6 sm:px-24 absolute top-0 left-0 cursor-pointer'>AUTH</p>
 
       {/* Enter email Id */}
@@ -110,7 +110,7 @@ const ResetPassword = () => {
       {!isEmailSent &&
         <form
           onSubmit={onSubmitEmail}
-          className='bg-slate-900 p-8 rounded-lg shadow-lg w-96 text-sm'>
+          className='bg-slate-900 p-8 rounded-lg shadow-lg w-96 text-sm overflow-hidden'>
           <h1 className='text-white text-2xl font-semibold text-center mb-4'>Reset Password</h1>
           <p className='text-center mb-6 text-indigo-300'>Enter Your Registered Email Address</p>
 
@@ -132,14 +132,14 @@ const ResetPassword = () => {
       {!isOtpSubmitted && isEmailSent &&
         <form
           onSubmit={onSubmitOtp}
-          className='bg-slate-900 p-8 rounded-lg shadow-lg w-96 text-sm'>
+          className='bg-slate-900 p-8 rounded-lg shadow-lg w-96 text-sm overflow-hidden'>
           <h1 className='text-white text-2xl font-semibold text-center mb-4'>Reset Password OTP</h1>
           <p className='text-center mb-6 text-indigo-300'>Enter the 6-digit code sent to your email id.</p>
 
           <div className='flex justify-between mb-8' onPaste={handlePaste}>
             {Array(6).fill(0).map((_, index) => {
               return <input type='text' maxLength='1' key={index} required
-                className='w-12 h-12 bg-[#333a5c] text-white text-center text-xl rounded-md'
+                className='w-9 h-9 sm:w-12 sm:h-12 bg-[#333a5c] text-white text-center text-xl rounded-md'
                 ref={e => inputRefs.current[index] = e}
                 onInput={(e) => handleInput(e, index)}
                 onKeyDown={(e) => handleKeyDown(e, index)}

@@ -73,7 +73,7 @@ const EmailVerify = () => {
   }, [isLogged, userData])
 
   return (
-    <div className='flex items-center justify-center min-h-screen px-6 sm:px-0 bg-slate-600'>
+    <div className='flex items-center justify-center min-h-screen px-6 sm:px-0 bg-slate-600 overflow-hidden'>
       <p onClick={() => navigate('/')} className='text-3xl font-bold text-white p-9 sm:p-6 sm:px-24 absolute top-0 left-0 cursor-pointer'>AUTH</p>
 
       <form
@@ -85,7 +85,7 @@ const EmailVerify = () => {
         <div className='flex justify-between mb-8' onPaste={handlePaste}>
           {Array(6).fill(0).map((_, index) => {
             return <input type='text' maxLength='1' key={index} required
-              className='w-12 h-12 bg-[#333a5c] text-white text-center text-xl rounded-md'
+              className='w-9 h-9 sm:w-12 sm:h-12 bg-[#333a5c] text-white text-center text-xl rounded-md'
               ref={e => inputRefs.current[index] = e}
               onInput={(e) => handleInput(e, index)}
               onKeyDown={(e) => handleKeyDown(e, index)}
